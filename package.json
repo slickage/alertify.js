@@ -2,7 +2,7 @@
   "name": "alertifyExample",
   "description": "browser dialogs never looked so good",
   "version": "1.0.0",
-  "homepage": "http://fabien-d.github.com/alertify.js/",
+  "homepage": "http://alertifyjs.org",
   "author": {
     "name": "Fabien Doiron",
     "email": "fabien.doiron@gmail.com"
