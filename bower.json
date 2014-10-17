@@ -1,17 +1,18 @@
 {
-    "name": "alertify.js-website",
-    "version": "0.3.11",
-    "authors": [
-        "Brad Berger <brad@bradb.net>"
-    ],
-    "license": "MIT",
-    "private": true,
-    "ignore": [
-        "**/.*",
-        "node_modules",
-        "assets/components"
-    ],
-    "dependencies": {
-        "fira": "*"
-    }
+  "name": "alertify.js-website",
+  "version": "0.3.11",
+  "authors": [
+    "Brad Berger <brad@bradb.net>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "assets/components"
+  ],
+  "dependencies": {
+    "fira": "*",
+    "fontawesome": "~4.2.0"
+  }
 }

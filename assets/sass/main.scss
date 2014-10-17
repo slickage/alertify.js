@@ -5,8 +5,8 @@ $sansSerif: "Fira Sans", $sansSerif;
 body {
   font: normal #{$fontSize}/#{$lineHeight} $sansSerif;
   color: #333;
-  background: #F9F9F9;
-  font-weight: 300;
+  background: #fff;
+  font-weight: 200;
 }
 
 @import "modules/_import.scss";
@@ -17,10 +17,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: $fontSize * 4;
   text-align: center;
   font-family: "Fira Sans", $sansSerif;
-  color: #FFF;
   margin: 0 0 $spacing * 2;
 }
 
@@ -66,17 +64,28 @@ a {
 
 .container {
   width: 900px;
+  max-width: 100%;
   margin: 0 auto;
 }
 
 .masthead {
-  padding: $spacing 0;
-  background: #222;
+  padding: $spacing * 2 0 $spacing * 4 0;
+  background: url(../img/mesh.png) #fff;
   margin-bottom: $spacing * 3;
-
+  border-bottom: 1px solid #999;
+  box-shadow: 0 0 10px rgba(0,0,0,.5);
   img {
     display: block;
     margin: 0 auto;
+  }
+  h1 {
+    color: #555;
+    font-size: $fontSize * 3;
+  }
+  hr {
+    margin: 3em;
+    border-top: 1px solid rgba(0,0,0,.2);
+    border-bottom: 1px solid rgba(0,0,0,.1);
   }
 }
 
@@ -104,8 +113,8 @@ a {
 }
 
 .footer {
-  background: #13181F;
-  color: #666;
+  background: url(../img/footer.png) #222;
+  color: #eee;
   text-align: center;
   padding: $spacing * 2 0;
 
@@ -253,6 +262,10 @@ a {
   }
 }
 
+img {
+  max-width: 100%;
+}
+
 @media only screen and (max-width: 830px) {
   img {
     max-width: 100%;
@@ -277,5 +290,131 @@ a {
 
   h2 {
     font-size: $fontSize * 1.5;
+  }
+}
+
+/**
+ * SyntaxHighlighter
+ * http://alexgorbatchev.com/SyntaxHighlighter
+ *
+ * SyntaxHighlighter is donationware. If you are using it, please donate.
+ * http://alexgorbatchev.com/SyntaxHighlighter/donate.html
+ *
+ * @version
+ * 3.0.83 (July 02 2010)
+ *
+ * @copyright
+ * Copyright (C) 2004-2010 Alex Gorbatchev.
+ *
+ * @license
+ * Dual licensed under the MIT and GPL licenses.
+ */
+.syntaxhighlighter {
+
+  background-color: #444 !important;
+  margin-bottom: 1em;
+
+  .gutter, .container {
+    padding: 5px 10px;
+    background-color: #444 !important;
+  }
+
+  .line.alt1 {
+    background-color: #444 !important;
+  }
+  .line.alt2 {
+    background-color: #444 !important;
+  }
+  .line.highlighted.alt1,  .line.highlighted.alt2 {
+    background-color: #e0e0e0 !important;
+  }
+  .line.highlighted.number {
+    color: black !important;
+  }
+  table caption {
+    color: white !important;
+  }
+  .gutter {
+    color: #afafaf !important;
+  }
+  .gutter .line {
+    padding-right: 6px;
+    border-right: 2px solid rgba(255,255,255,.3) !important;
+  }
+  .gutter .line.highlighted {
+    background-color: #6ce26c !important;
+    color: white !important;
+  }
+  .printing .line .content {
+    border: none !important;
+  }
+  .collapsed {
+    overflow: visible !important;
+  }
+  .collapsed .toolbar {
+    color: blue !important;
+    border: 1px solid #6ce26c !important;
+  }
+  .collapsed .toolbar a {
+    color: blue !important;
+  }
+  .collapsed .toolbar a:hover {
+    color: red !important;
+  }
+  .toolbar {
+    color: white !important;
+    background: #6ce26c !important;
+    border: none !important;
+  }
+  .toolbar a {
+    color: white !important;
+  }
+  .toolbar a:hover {
+    color: white !important;
+  }
+  .plain,  .plain a {
+    color: white !important;
+  }
+  .comments,  .comments a {
+    color: #008200 !important;
+  }
+  .string,  .string a {
+    color: #36c !important;
+  }
+  .keyword {
+    color: #006699 !important;
+  }
+  .preprocessor {
+    color: gray !important;
+  }
+  .variable {
+    color: #aa7700 !important;
+  }
+  .value {
+    color: #009900 !important;
+  }
+  .functions {
+    color: #ff1493 !important;
+  }
+  .constants {
+    color: #0066cc !important;
+  }
+  .script {
+    font-weight: bold !important;
+    color: #006699 !important;
+    background-color: none !important;
+  }
+  .color1,  .color1 a {
+    color: gray !important;
+  }
+  .color2,  .color2 a {
+    color: #ff1493 !important;
+  }
+  .color3,  .color3 a {
+    color: red !important;
+  }
+
+  .keyword {
+    font-weight: bold !important;
   }
 }

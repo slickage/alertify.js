@@ -22,6 +22,12 @@ gulp.task("uglify", function () {
         .pipe(gulp.dest(p("assets/js")));
 });
 
+gulp.task("sass", function() {
+    gulp.src("assets/sass/main.scss")
+        .pipe(sass())
+        .pipe(gulp.dest("assets/css"));
+});
+
 gulp.task("css", function () {
     gulp.src([
         p("assets/js/lib/sh/shCore.css"),
@@ -36,6 +42,7 @@ gulp.task("css", function () {
 gulp.task("build", ["css", "uglify"]);
 
 gulp.task("watch", function () {
+    gulp.watch(p("assets/sass/**/*.scss"), ["sass"]);
     gulp.watch(p("assets/css/examples.css"), ["css"]);
     gulp.watch(p("assets/js/examples.js"), ["uglify"]);
 });
