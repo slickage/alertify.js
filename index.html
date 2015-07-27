@@ -1,356 +1,313 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>alertify.js - browser dialogs never looked so good</title>
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/js/lib/alertify/alertify.css" id="toggleCSS">
-    <link rel="stylesheet" href="assets/components/fontawesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/components/fira/fira.css">
-    <meta name="viewport" content="width=device-width">
-    <script>
-        // ensure legacy browsers support html5 tags
-        // could include a shim or modernizr or...
-        // this is a quick workaround for the time being
-        document.createElement("nav");
-        document.createElement("header");
-        document.createElement("article");
-        document.createElement("section");
-        document.createElement("footer");
-    </script>
-</head>
-<body>
-<header class="masthead">
-    <div class="container">
-        <div class="img-header">
-            <img src="assets/img/alertify_full.png" alt="Alertify.js">
-        </div>
-        <h1>JavaScript browser dialogs</h1>
-        <hr>
-        <img src="assets/img/dialogs.png"
-             alt="Native browser dialogs versus alertify.js dialogs">
-    </div>
-</header>
-
-<div class="container">
-<h2><span>Download alertify.js</span></h2>
-<section class="block">
-    <div class="cta">
-        <a class="button-primary" href="https://github.com/alertifyjs/alertify.js/archive/0.3.12.zip">Download
-            0.3.12 <span class="small">(zip)</span></a>
-        <a class="button-primary" href="https://github.com/alertifyjs/alertify.js/tree/0.3.12">Source Code <span
-                class="small">(GitHub)</span></a>
-    </div>
-</section>
-
-<h2><span>Features</span></h2>
-<section class="block">
-    <div class="row">
-        <div class="media feature">
-            <div class="mediaAside"><i class="fa fa-pencil"></i></div>
-            <div class="mediaBody">
-                <h3>Customizable look and feel</h3>
-
-                <p>If you can edit CSS you can customize the look of alertify.js to match your needs</p>
-            </div>
-        </div>
-        <div class="media feature alt">
-            <div class="mediaAside"><i class="fa fa-check"></i></div>
-            <div class="mediaBody">
-                <h3>Lightweight, no dependencies</h3>
-
-                <p>No matter the type of project, if JavaScript is available alertify.js can be used</p>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="media feature">
-            <div class="mediaAside"><i class="fa fa-bullhorn"></i></div>
-            <div class="mediaBody">
-                <h3>Growl-like notification</h3>
-
-                <p>Unobtrusive notification messages can be used to give feedback to users or even as a console.log
-                    replacement</p>
-            </div>
-        </div>
-        <div class="media feature alt">
-            <div class="mediaAside"><i class="fa fa-laptop"></i></div>
-            <div class="mediaBody">
-                <h3>Cross-browser and platform</h3>
-
-                <p>Whether you use a desktop, laptop, tablet or mobile device, alertify.js has you covered</p>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="media feature">
-            <div class="mediaAside"><i class="fa fa-star"></i></div>
-            <div class="mediaBody">
-                <h3>Simple API</h3>
-
-                <p>From callbacks to handle OK and Cancel actions to customizable properties, using alertify.js is
-                    very straightforward<br>
-                    <a href="https://github.com/alertifyjs/alertify.js/wiki/API-Documentation">Read full
-                        documentation</a></p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<h2><span>Setup</span></h2>
-<section class="block">
-
-
-    <div class="row">
-        <div class="media feature">
-            <h3>Download source code</h3>
-            <a class="button-primary" href="https://github.com/alertifyjs/alertify.js/archive/0.3.12.zip">Download
-                0.3.12 <span class="small">(zip)</span></a>
-        </div>
-        <div class="media feature alt">
-            <h3>Or install via bower</h3>
-
-            <p>Alertify.js can be installed using <a href="http://twitter.github.com/bower/">bower</a>.</p>
-
-            <p><pre class="brush:bash">
-						$ bower install alertifyjs</pre>
-            </p>
-        </div>
-    </div>
-</section>
-
-<h2><span>Usage</span></h2>
-<section class="block">
-    <h3>Insert into HTML</h3>
-
-    <p>Include JS</p>
-
-    <p><pre class="brush:html">
-				&lt;!-- ideally at the bottom of the page --&gt;
-				&lt;!-- also works in the &lt;head&gt; --&gt;
-				&lt;script src="PATH_TO_FILE/alertify.min.js"&gt;&lt;/script&gt;</pre>
-
-    <p>Include CSS (default theme)</p>
-
-    <p><pre class="brush:html">
-				&lt;!-- include the default theme --&gt;
-				&lt;link rel="stylesheet" href="PATH_TO_FILE/alertify.css" /&gt;</pre>
-
-    <p>Include CSS (if you're using Bootstrap)</p>
-
-    <p><pre class="brush:html">
-				&lt;!-- include a theme, can be included into the core instead of 2 separate files --&gt;
-				&lt;link rel="stylesheet" href="PATH_TO_FILE/alertify-bootstrap.css" /&gt;</pre>
-</section>
-
-<h2><span>Default Usage</span></h2>
-<section class="usage">
-    <section class="block">
-        <h3>Default dialogs</h3>
-
-        <p><pre class="brush:javascript">
-					// alert dialog
-					alertify.alert("Message");</pre>
-
-        <p><pre class="brush:javascript">
-					// confirm dialog
-					alertify.confirm("Message", function (e) {
-						if (e) {
-							// user clicked "ok"
-						} else {
-							// user clicked "cancel"
-						}
-					});</pre>
-
-        <p><pre class="brush:javascript">
-					// prompt dialog
-					alertify.prompt("Message", function (e, str) {
-						// str is the input text
-						if (e) {
-							// user clicked "ok"
-						} else {
-							// user clicked "cancel"
-						}
-					}, "Default Value");</pre>
-        <nav class="button-group">
-            <a class="button-primary" href="#" id="alert">Alert Dialog</a>
-            <a class="button-primary" href="#" id="confirm">Confirm Dialog</a>
-            <a class="button-primary" href="#" id="prompt">Prompt Dialog</a>
-        </nav>
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Alertify.js by alertifyjs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Alertify.js</h1>
+      <h2 class="project-tagline">JavaScript Alert/Notification System</h2>
+      <a href="https://github.com/alertifyjs/alertify.js" class="btn">View on GitHub</a>
+      <a href="https://github.com/alertifyjs/alertify.js/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/alertifyjs/alertify.js/tarball/master" class="btn">Download .tar.gz</a>
     </section>
 
-    <section class="block">
-        <h3>Default notifications</h3>
+    <section class="main-content">
+      <h1>
+<a id="alertifyjs" class="anchor" href="#alertifyjs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Alertify.js</h1>
 
-        <p><pre class="brush:javascript">
-					// standard notification
-					// setting the wait property to 0 will
-					// keep the log message until it's clicked
-                    //
-                    // You can pass a custom function to be executed when the
-                    // notification is clicked using the click argument.
-					alertify.log("Notification", type, wait, click);</pre>
+<p><a href="http://travis-ci.org/alertifyjs/alertify.js"><img src="https://secure.travis-ci.org/alertifyjs/alertify.js.png" alt="build status"></a>
+<a href="http://badge.fury.io/bo/alertifyjs"><img src="https://badge.fury.io/bo/alertifyjs.svg" alt="Bower version"></a>
+<a href="https://gitter.im/alertifyjs/alertify.js?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Gitter"></a>
+<a href="https://waffle.io/alertifyjs/alertify.js"><img src="https://badge.waffle.io/alertifyjs/alertify.js.png?label=ready&amp;title=Ready" alt="Stories in Ready"></a></p>
 
-        <p><pre class="brush:javascript">
-					// success notification
-					// shorthand for alertify.log("Notification", "success");
-                    //
-                    // You can pass a custom function to be executed when the
-                    // notification is clicked using the click argument.
-					alertify.success("Success notification", null, click);</pre>
+<p><a href="https://www.npmjs.com/package/alertify.js"><img src="https://img.shields.io/npm/dm/localeval.svg" alt="npm downloads"></a>
+<a href="https://www.npmjs.com/package/alertify.js"><img src="https://img.shields.io/npm/v/alertify.js.svg" alt="npm version"></a>
+<a href="https://www.npmjs.com/package/alertify.js"><img src="https://img.shields.io/npm/l/alertify.js.svg" alt="license"></a>
+<a href="https://david-dm.org/alertifyjs/alertify.js"><img src="https://david-dm.org/alertifyjs/alertify.js.svg" alt="Dependency Status"></a>
+<a href="https://david-dm.org/alertifyjs/alertify.js#info=devDependencies&amp;view=table"><img src="https://david-dm.org/alertifyjs/alertify.js/dev-status.svg" alt="Dev Dependency status"></a></p>
 
-        <p><pre class="brush:javascript">
-					// error notification
-					// shorthand for alertify.log("Notification", "error");
-					alertify.error("Error notification");</pre>
-        <nav class="button-group">
-            <a class="button-primary" href="#" id="notification">Standard Log</a>
-            <a class="button-primary" href="#" id="success">Success Log</a>
-            <a class="button-primary" href="#" id="error">Error Log</a>
-        </nav>
+<p><a href="https://nodei.co/npm/alertify.js/"><img src="https://nodei.co/npm/alertify.js.png" alt="NPM"></a></p>
+
+<h1>
+<a id="alertifyjs-1" class="anchor" href="#alertifyjs-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Alertify.js</h1>
+
+<p>Alertify is an unobtrusive customizable JavaScript notification system. It's designed as a 
+light-weight library for creating simple JavaScript browser dialogs and messages. It requires 
+no external libraries like jQuery, and has a minimal feature set to make sure it's fast
+and doesn't consume a lot of bandwidth.</p>
+
+<h2>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h2>
+
+<h4>
+<a id="customizable-look-and-feel" class="anchor" href="#customizable-look-and-feel" aria-hidden="true"><span class="octicon octicon-link"></span></a>Customizable look and feel</h4>
+
+<p>If you can edit CSS you can customize the look of alertify.js to match your needs.</p>
+
+<h4>
+<a id="lightweight-no-dependencies" class="anchor" href="#lightweight-no-dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Lightweight, no dependencies</h4>
+
+<p>No matter the type of project, if JavaScript is available alertify.js can be used.</p>
+
+<h4>
+<a id="growl-like-notification" class="anchor" href="#growl-like-notification" aria-hidden="true"><span class="octicon octicon-link"></span></a>Growl-like notification</h4>
+
+<p>Unobtrusive notification messages can be used to give feedback to users or even as a console.log replacement.</p>
+
+<h4>
+<a id="cross-browser-and-platform" class="anchor" href="#cross-browser-and-platform" aria-hidden="true"><span class="octicon octicon-link"></span></a>Cross-browser and platform</h4>
+
+<p>Whether you use a desktop, laptop, tablet or mobile device, alertify.js has you covered.</p>
+
+<h4>
+<a id="simple-api" class="anchor" href="#simple-api" aria-hidden="true"><span class="octicon octicon-link"></span></a>Simple API</h4>
+
+<p>From callbacks to handle OK and Cancel actions to customizable properties, using alertify.js is very 
+straightforward.</p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<h4>
+<a id="via-zip" class="anchor" href="#via-zip" aria-hidden="true"><span class="octicon octicon-link"></span></a>Via ZIP</h4>
+
+<p>Download the latest files in a ZIP archive from GitHub.</p>
+
+<h4>
+<a id="via-bower" class="anchor" href="#via-bower" aria-hidden="true"><span class="octicon octicon-link"></span></a>Via Bower</h4>
+
+<pre><code>bower install --save alertifyjs
+</code></pre>
+
+<h4>
+<a id="via-npm" class="anchor" href="#via-npm" aria-hidden="true"><span class="octicon octicon-link"></span></a>Via NPM</h4>
+
+<pre><code>npm install --save alertify.js
+</code></pre>
+
+<h2>
+<a id="installation-1" class="anchor" href="#installation-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Include the default JavaScript and css files.</p>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">link</span> <span class="pl-e">rel</span>=<span class="pl-s"><span class="pl-pds">"</span>stylehsheet<span class="pl-pds">"</span></span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>path/to/file/dist/css/alertify.css<span class="pl-pds">"</span></span>&gt;
+&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>path/to/file/dist/js/alertify.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre></div>
+
+<p>To include a theme, replace the <code>alertfy.css</code> file with the theme's file.</p>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">link</span> <span class="pl-e">rel</span>=<span class="pl-s"><span class="pl-pds">"</span>stylehsheet<span class="pl-pds">"</span></span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>path/to/file/dist/css/bootstrap-3.css<span class="pl-pds">"</span></span>&gt;
+&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>path/to/file/dist/js/alertify.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre></div>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<h3>
+<a id="dialogs" class="anchor" href="#dialogs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dialogs</h3>
+
+<h4>
+<a id="alert-dialog" class="anchor" href="#alert-dialog" aria-hidden="true"><span class="octicon octicon-link"></span></a>Alert Dialog</h4>
+
+<pre><code>// alert dialog
+alertify.alert("Message");
+</code></pre>
+
+<h4>
+<a id="confirm-dialog" class="anchor" href="#confirm-dialog" aria-hidden="true"><span class="octicon octicon-link"></span></a>Confirm Dialog</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-c">// confirm dialog</span>
+alertify.<span class="pl-c1">confirm</span>(<span class="pl-s"><span class="pl-pds">"</span>Message<span class="pl-pds">"</span></span>, <span class="pl-k">function</span> (<span class="pl-smi">e</span>) {
+    <span class="pl-k">if</span> (e) {
+        <span class="pl-c">// user clicked "ok"</span>
+    } <span class="pl-k">else</span> {
+        <span class="pl-c">// user clicked "cancel"</span>
+    }
+});</pre></div>
+
+<h4>
+<a id="prompt-dialog" class="anchor" href="#prompt-dialog" aria-hidden="true"><span class="octicon octicon-link"></span></a>Prompt Dialog</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-c">// prompt dialog</span>
+alertify.<span class="pl-c1">prompt</span>(<span class="pl-s"><span class="pl-pds">"</span>Message<span class="pl-pds">"</span></span>, <span class="pl-k">function</span> (<span class="pl-smi">e</span>, <span class="pl-smi">str</span>) {
+    <span class="pl-c">// str is the input text</span>
+    <span class="pl-k">if</span> (e) {
+        <span class="pl-c">// user clicked "ok"</span>
+    } <span class="pl-k">else</span> {
+        <span class="pl-c">// user clicked "cancel"</span>
+    }
+}, <span class="pl-s"><span class="pl-pds">"</span>Default Value<span class="pl-pds">"</span></span>);</pre></div>
+
+<h3>
+<a id="notifications" class="anchor" href="#notifications" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notifications</h3>
+
+<h4>
+<a id="standard-notification" class="anchor" href="#standard-notification" aria-hidden="true"><span class="octicon octicon-link"></span></a>Standard Notification</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-c">// standard notification</span>
+<span class="pl-c">// setting the wait property to 0 will</span>
+<span class="pl-c">// keep the log message until it's clicked</span>
+<span class="pl-c">//</span>
+<span class="pl-c">// You can pass a custom function to be executed when the</span>
+<span class="pl-c">// notification is clicked using the click argument.</span>
+alertify<span class="pl-c1">.log</span>(<span class="pl-s"><span class="pl-pds">"</span>Notification<span class="pl-pds">"</span></span>, type, wait, click);</pre></div>
+
+<h4>
+<a id="success-notification" class="anchor" href="#success-notification" aria-hidden="true"><span class="octicon octicon-link"></span></a>Success Notification</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-c">// success notification</span>
+<span class="pl-c">// shorthand for alertify.log("Notification", "success");</span>
+<span class="pl-c">//</span>
+<span class="pl-c">// You can pass a custom function to be executed when the</span>
+<span class="pl-c">// notification is clicked using the click argument.</span>
+alertify.success(<span class="pl-s"><span class="pl-pds">"</span>Success notification<span class="pl-pds">"</span></span>, <span class="pl-c1">null</span>, <span class="pl-k">function</span>() {
+  alertify<span class="pl-c1">.log</span>(<span class="pl-s"><span class="pl-pds">"</span>You clicked the success notification<span class="pl-pds">"</span></span>);
+});</pre></div>
+
+<h4>
+<a id="error-notification" class="anchor" href="#error-notification" aria-hidden="true"><span class="octicon octicon-link"></span></a>Error Notification</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-c">// error notification</span>
+<span class="pl-c">// shorthand for alertify.log("Notification", "error");</span>
+alertify<span class="pl-c1">.error</span>(<span class="pl-s"><span class="pl-pds">"</span>Error notification<span class="pl-pds">"</span></span>);</pre></div>
+
+<h3>
+<a id="customizable-properties" class="anchor" href="#customizable-properties" aria-hidden="true"><span class="octicon octicon-link"></span></a>Customizable Properties</h3>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-c">// using the `set` method</span>
+alertify.set( ... );</pre></div>
+
+<h4>
+<a id="delay" class="anchor" href="#delay" aria-hidden="true"><span class="octicon octicon-link"></span></a>Delay</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-c">// time (in ms) before log message hides</span>
+<span class="pl-c">// default: 5000</span>
+alertify.set({ delay<span class="pl-k">:</span> <span class="pl-c1">10000</span> });
+<span class="pl-c">// log will hide after 10 seconds</span>
+alertify<span class="pl-c1">.log</span>(<span class="pl-s"><span class="pl-pds">"</span>Notification<span class="pl-pds">"</span></span>);
+<span class="pl-c">// setting the delay to 0 will leave</span>
+<span class="pl-c">// the log message until it's clicked</span>
+alertify<span class="pl-c1">.log</span>(<span class="pl-s"><span class="pl-pds">"</span>Notification<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>, <span class="pl-c1">0</span>);</pre></div>
+
+<h4>
+<a id="button-labels" class="anchor" href="#button-labels" aria-hidden="true"><span class="octicon octicon-link"></span></a>Button Labels</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-c">// custom OK and Cancel label</span>
+<span class="pl-c">// default: OK, Cancel</span>
+alertify.set({ labels<span class="pl-k">:</span> {
+    ok     <span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Accept<span class="pl-pds">"</span></span>,
+    cancel <span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Deny<span class="pl-pds">"</span></span>
+} });
+<span class="pl-c">// button labels will be "Accept" and "Deny"</span>
+alertify.<span class="pl-c1">confirm</span>(<span class="pl-s"><span class="pl-pds">"</span>Message<span class="pl-pds">"</span></span>);</pre></div>
+
+<h4>
+<a id="button-focus" class="anchor" href="#button-focus" aria-hidden="true"><span class="octicon octicon-link"></span></a>Button Focus</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-c">// default: OK</span>
+alertify.set({ buttonFocus<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>cancel<span class="pl-pds">"</span></span> }); <span class="pl-c">// "none", "ok", "cancel"</span>
+<span class="pl-c">// focus will be given to the cancel button</span>
+alertify.<span class="pl-c1">confirm</span>(<span class="pl-s"><span class="pl-pds">"</span>Message<span class="pl-pds">"</span></span>);</pre></div>
+
+<h4>
+<a id="button-order" class="anchor" href="#button-order" aria-hidden="true"><span class="octicon octicon-link"></span></a>Button Order</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-c">// order of the buttons</span>
+<span class="pl-c">// default: Cancel, OK</span>
+alertify.set({ buttonReverse<span class="pl-k">:</span> <span class="pl-c1">true</span> }); <span class="pl-c">// true, false</span>
+<span class="pl-c">// buttons order will be OK, Cancel</span>
+alertify.<span class="pl-c1">confirm</span>(<span class="pl-s"><span class="pl-pds">"</span>Message<span class="pl-pds">"</span></span>);</pre></div>
+
+<h3>
+<a id="custom-notifications" class="anchor" href="#custom-notifications" aria-hidden="true"><span class="octicon octicon-link"></span></a>Custom Notifications</h3>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-c">// extend log method</span>
+<span class="pl-c">// set it</span>
+alertify.custom <span class="pl-k">=</span> alertify.extend(<span class="pl-s"><span class="pl-pds">"</span>custom<span class="pl-pds">"</span></span>);
+<span class="pl-c">// use it</span>
+alertify.custom(<span class="pl-s"><span class="pl-pds">"</span>Notification<span class="pl-pds">"</span></span>);</pre></div>
+
+<h2>
+<a id="get-in-touch" class="anchor" href="#get-in-touch" aria-hidden="true"><span class="octicon octicon-link"></span></a>Get In Touch</h2>
+
+<p>Feel free to stop by the <a href="https://gitter.im/alertifyjs/alertify.js">Alertify.js chat room</a> to ask questions, report issues, make suggestions, or just say hi.</p>
+
+<p>If you prefer something that's not in real-time, stop by the <a href="https://groups.google.com/forum/#!forum/alertifyjs/new">Alertify.js Google Group</a> to get in touch, too.</p>
+
+<h2>
+<a id="reporting-issues" class="anchor" href="#reporting-issues" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reporting Issues</h2>
+
+<p>If at all possible, please set up an example in <a href="http://plunkr.co">Plunkr</a>, 
+<a href="//jsbin.com">JS Bin</a>, <a href="http://codepen.io/">Codepen</a> etc. That will greatly speed up the process of 
+fixing the issue. If you need the issue fixed right away, a reproduce-able, concrete example is your 
+best way to get our attention! Not to say that we won't do our best to fix other issues, though :-)</p>
+
+<h2>
+<a id="where-is-it-being-tested" class="anchor" href="#where-is-it-being-tested" aria-hidden="true"><span class="octicon octicon-link"></span></a>Where is it being tested?</h2>
+
+<ul>
+<li>Microsoft Internet Explorer 9+</li>
+<li>Google Chrome</li>
+<li>Mozilla Firefox</li>
+<li>Apple Safari</li>
+<li>Opera</li>
+<li>iOS</li>
+<li>Android</li>
+</ul>
+
+<h3>
+<a id="ie-8-support" class="anchor" href="#ie-8-support" aria-hidden="true"><span class="octicon octicon-link"></span></a>IE 8 Support</h3>
+
+<p>Internet Explorer 8 support was dropped in version 0.3.13. If you need IE 8 support,
+use version 0.3.12. Since Microsoft no longer supports IE 8, it's better to move on.</p>
+
+<h3>
+<a id="ie-9-support" class="anchor" href="#ie-9-support" aria-hidden="true"><span class="octicon octicon-link"></span></a>IE 9 Support</h3>
+
+<p>Internet Explorer 9 will be dropped in 0.4 and above, as well.</p>
+
+<h2>
+<a id="credit-where-credit-is-due" class="anchor" href="#credit-where-credit-is-due" aria-hidden="true"><span class="octicon octicon-link"></span></a>Credit where credit is due</h2>
+
+<p>See all list of <a href="https://github.com/alertifyjs/alertify.js/contributors">contributors</a></p>
+
+<h2>
+<a id="maintenance" class="anchor" href="#maintenance" aria-hidden="true"><span class="octicon octicon-link"></span></a>Maintenance</h2>
+
+<p>This is a fork of the original <a href="//github.com/fabien-d/alertify.js">fabien-d/alertify.js repository</a> which is
+no longer being maintained.</p>
+
+<p>This fork is being actively maintained. You should submit your issues here.</p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>alertify.js is licensed under <a href="http://www.opensource.org/licenses/MIT">MIT license</a></p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/alertifyjs/alertify.js">Alertify.js</a> is maintained by <a href="https://github.com/alertifyjs">alertifyjs</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
     </section>
 
-    <h2><span>Customizable Properties</span></h2>
-    <section class="block">
-        <p><pre class="brush:javascript">
-					// using the `set` method
-					alertify.set( ... );</pre>
-    </section>
+            <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-64348743-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
 
-    <section class="block">
-        <h3>Delay</h3>
-
-        <p><pre class="brush:javascript">
-					// time (in ms) before log message hides
-					// default: 5000
-					alertify.set({ delay: 10000 });
-					// log will hide after 10 seconds
-					alertify.log("Notification");
-					// setting the delay to 0 will leave
-					// the log message until it's clicked
-					alertify.log("Notification", "", 0);</pre>
-        <nav class="button-group">
-            <a class="button-primary" href="#" id="delay">Hide in 10 seconds</a>
-            <a class="button-primary" href="#" id="forever">Persistent Log</a>
-        </nav>
-    </section>
-
-    <section class="block">
-        <h3>Button labels</h3>
-
-        <p><pre class="brush:javascript">
-					// custom OK and Cancel label
-					// default: OK, Cancel
-					alertify.set({ labels: {
-						ok     : "Accept",
-						cancel : "Deny"
-					} });
-					// button labels will be "Accept" and "Deny"
-					alertify.confirm("Message");</pre>
-        <nav class="button-group">
-            <a class="button-primary" href="#" id="labels">Custom Labels</a>
-        </nav>
-
-    </section>
-
-    <section class="block">
-        <h3>Button focus</h3>
-
-        <p><pre class="brush:javascript">
-					// which button receives focus
-					// default: OK
-					alertify.set({ buttonFocus: "cancel" }); // "none", "ok", "cancel"
-					// focus will be given to the cancel button
-					alertify.confirm("Message");</pre>
-
-        <nav class="button-group">
-            <a class="button-primary" href="#" id="focus">Button Focus</a>
-        </nav>
-    </section>
-
-    <section class="block">
-        <h3>Button order</h3>
-
-        <p><pre class="brush:javascript">
-					// order of the buttons
-					// default: Cancel, OK
-					alertify.set({ buttonReverse: true }); // true, false
-					// buttons order will be OK, Cancel
-					alertify.confirm("Message");</pre>
-
-        <nav class="button-group">
-            <a class="button-primary" href="#" id="order">Button Order</a>
-        </nav>
-    </section>
-
-    <h2><span>Custom Notification</span></h2>
-    <section class="block">
-        <p><pre class="brush:javascript">
-					// extend log method
-					// set it
-					alertify.custom = alertify.extend("custom");
-					// use it
-					alertify.custom("Notification");</pre>
-
-
-        <nav class="button-group">
-            <a class="button-primary" href="#" id="custom">Custom Log</a>
-        </nav>
-    </section>
-
-    <h2><span>Custom Themes</span></h2>
-    <section class="block">
-        <p>
-        <pre class="brush:javascript">
-					// bootstrap theme
-					// use bootstrap theme CSS
-					// themes/alertify.bootstrap.css
-					alertify.prompt("message", ...);</pre>
-
-        <nav class="button-group">
-            <a class="button-primary" href="#" id="bootstrap">Bootstrap Theme</a>
-        </nav>
-
-        <nav class="button-group">
-            <a class="button-primary" href="#" id="bootstrap-3">Bootstrap 3 Theme</a>
-        </nav>
-    </section>
-</section>
-</div>
-
-<footer class="footer">
-    <div class="container">
-        <p><a href="http://github.com/alertifyjs/alertify.js/issues">Report an issue</a> | <a
-                href="http://github.com/alertifyjs/alertify.js">View on GitHub</a></p>
-
-        <p>alertify.js is licensed under <a href="http://www.opensource.org/licenses/MIT">MIT</a>,
-            copyright &copy; Fabien Doiron and maintained by <a href="https://bradb.net">Brad Berger</a>
-        </p>
-
-        <ul class="featured-list">
-            <li><a href="http://javascriptweekly.com/archive/108.html" class="jsweekly">JavaScript Weekly, No. 108</a>
-            </li>
-            <li><a href="http://html5weekly.com/archive/95.html" class="html5weekly">HTML5 Weekly, No. 95</a></li>
-            <li><a href="http://blog.teamtreehouse.com/explaining-css-landing-pages-treehouse-show-ep-22"
-                   class="treehouse">The Treehouse Show, Ep. 22</a></li>
-            <li><a href="http://www.webdevradio.com/?id=131" class="webdev">webdev radio, Ep. 105</a></li>
-        </ul>
-    </div>
-</footer>
-
-<script src="assets/js/main.js" async delay></script>
-<script type="text/javascript">
-    var _paq = _paq || [];
-    _paq.push(['trackPageView']);
-    _paq.push(['enableLinkTracking']);
-    (function() {
-        var u="//analytics.bitola.co/";
-        _paq.push(['setTrackerUrl', u+'piwik.php']);
-        _paq.push(['setSiteId', 5]);
-        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-    })();
-</script>
-<noscript><p><img src="//analytics.bitola.co/piwik.php?idsite=5" style="border:0;" alt="" /></p></noscript>
-</body>
+  </body>
 </html>
+
