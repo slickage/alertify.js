@@ -27,7 +27,7 @@ var Alertify = (function(global, undefined) {
          */
         var dialogs = {
             buttons: {
-                holder: "<nav class='alertify-buttons'>{{buttons}}</nav>",
+                holder: "<div class='alertify-buttons'>{{buttons}}</nav>",
                 ok: "<button class='alertify-button alertify-button-ok' id='alertify-ok'>{{ok}}</button>",
                 cancel: "<button class='alertify-button alertify-button-cancel' id='alertify-cancel'>{{cancel}}</button>"
             },
